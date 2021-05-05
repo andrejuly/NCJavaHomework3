@@ -25,7 +25,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         Node<E> newNode = new Node<>(element,lastNode,null);
         last = newNode;
         if (lastNode == null)
-            first = new Node<>(element);
+            first = newNode;
         else {
             lastNode.setNext(newNode);
 
@@ -37,7 +37,8 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         if (element == null) {
             throw new IllegalArgumentException("Null");
         }
-        if (size == 0) {
+        Node<E> newNode = new Node<>(element, null, first);
+        if (first == null) {
             first = new Node<>(element);
             last = first;
         } else {
@@ -50,14 +51,14 @@ public class MyLinkedList<E> implements ILinkedList<E> {
     private Node<E> getLinkByIndex(int index)
     {
         Node<E> result;
-        if (this.size >> 1 >= index) {
-            result = this.first;
+        if (size >> 1 >= index) {
+            result = first;
             for (int i = 0; i < index; i++) {
                 result = result.getNext();
             }
         } else {
-            result = this.last;
-            for (int i = this.size - 1; i > index; i--) {
+            result = last;
+            for (int i = size - 1; i > index; i--) {
                 result = result.getPrevious();
             }
         }
@@ -202,15 +203,16 @@ public class MyLinkedList<E> implements ILinkedList<E> {
             stringBuilder.append("Empty list.");
             return stringBuilder.toString();
         }
-
-        Node<E> temp = first;
+        Iterator<E> it = iterator();
         int i = 0;
-        while (temp != null) {
-            stringBuilder.append(i + ". " + temp.getElement().toString() + "; ");
+        while (true) {
+            E e = it.next();
+            stringBuilder.append(i).append(")").append(e);
             i++;
-            temp = temp.getNext();
+            if (!it.hasNext())
+                return stringBuilder.toString();
+            stringBuilder.append(';').append(' ');
         }
-        return stringBuilder.toString();
     }
 
     @Override

@@ -1,19 +1,31 @@
-import com.ulyanovcompany.mylinkedlist.*;
+package com.ulyanovcompany;
+
+
+import com.ulyanovcompany.mylinkedlist.MyLinkedList;
+
+import java.util.Arrays;
 
 public class MainClass {
     public static void main(String[] args) {
+        //testMyLinkedList();
+        //TestCollection.compareMyLinkedListAndStandardLinkedList();
+        //TestCollection.testList();
+        TestCollection.testSet();
+    }
 
+    public static void testMyLinkedList() {
         System.out.println("Test MyLinkedList:");
         MyLinkedList<Integer> list = new MyLinkedList<>();
 
         System.out.println();
         System.out.println("Size of list: " + list.size());
 
-        list.add(0, -4);
+        list.add(0, 341);
+        list.add( -4);
         list.add(132);
         list.add(13);
+        list.add(0, -1323);
         list.add(1333);
-        list.add(0, 21);
         list.add(-321);
         list.add(56);
         list.add(3);
@@ -57,13 +69,16 @@ public class MainClass {
         System.out.println("Element with index = 0" + list.get(0));
         System.out.println();
 
+        Integer[] array = new Integer[list.size()];
+        list.toArray(array);
+        System.out.println("toArray: " + Arrays.toString(array));
+
         System.out.println("Clearing list");
         list.clear();
         System.out.println("Size = " + list.size());
         System.out.println("Print list");
         System.out.println(list.toString());
-
+        System.out.println();
+        System.out.println();
     }
-
 }
-
