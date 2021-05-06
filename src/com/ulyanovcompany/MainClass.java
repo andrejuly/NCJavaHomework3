@@ -7,10 +7,14 @@ import java.util.Arrays;
 
 public class MainClass {
     public static void main(String[] args) {
-        //testMyLinkedList();
-        //TestCollection.compareMyLinkedListAndStandardLinkedList();
-        //TestCollection.testList();
-        TestCollection.testSet();
+        testMyLinkedList();
+
+        int elements = 100000;
+
+        TestCollection.compareMyLinkedListAndStandardLinkedList(elements);
+        TestCollection.testList(elements);
+        TestCollection.testSet(elements);
+        TestCollection.testMap(elements);
     }
 
     public static void testMyLinkedList() {
@@ -65,8 +69,8 @@ public class MainClass {
         System.out.println();
         System.out.println("Size = " + list.size());
 
-        System.out.println("Element with index = 4" + list.get(4));
-        System.out.println("Element with index = 0" + list.get(0));
+        System.out.println("Element with index = 4:  " + list.get(4));
+        System.out.println("Element with index = 0:  " + list.get(0));
         System.out.println();
 
         Integer[] array = new Integer[list.size()];
